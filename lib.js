@@ -14,20 +14,20 @@ const findVowelIndexes = (chars) => {
 
 const range = (n) => Array.from(Array(n).keys());
 
-const rotateN = (indexes, n) => {
-  const length = indexes.length;
-  const indexesRotated = Array(length);
+const rotateArrayN = (arr, n) => {
+  const length = arr.length;
+  const arrRotated = Array(length);
   for (const index of range(length)) {
-    const rotatedIndex = (index + n) % length;
-    indexesRotated[index] = indexes[rotatedIndex];
+    const finalRotatedIndex = (index + n) % length;
+    arrRotated[index] = arr[finalRotatedIndex];
   }
-  return indexesRotated;
+  return arrRotated;
 };
 
 export const vowelShift = (s, n) => {
   const charsIn = Array.from(s);
   const vowelIndexes = findVowelIndexes(charsIn);
-  const vowelIndexesRotated = rotateN(vowelIndexes, n)
+  const vowelIndexesRotated = rotateArrayN(vowelIndexes, n)
   const charsOut = [...charsIn];
   for (const index of range(vowelIndexes.length)) {
     const inIndex = vowelIndexes[index];
